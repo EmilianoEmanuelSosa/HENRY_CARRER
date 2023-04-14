@@ -1,0 +1,6 @@
+A partir del CSV hospitales2.csv, generar un archivo CSV de salida, que contenga los siguientes campos en este orden:
+latitude
+longitude
+name
+label
+Con los correspondientes datos extraídos del CSV original, el campo name tiene que corresponder con la dirección del hospital, y el campo label con el nombre del hospital.
