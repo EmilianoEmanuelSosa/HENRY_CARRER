@@ -13,7 +13,6 @@ import numpy as np
 # For example the advance indexing
 
 
-
 # a = np.arange(0,15)
 # mask=(a >= 4)&(a <= 10)
 # result=a[mask]
@@ -33,7 +32,6 @@ import numpy as np
 
 # array2 = np.array([[0,1,2,3,4,5]])
 # print(f" Array2's array this a array with the shape (1,n) like: {array2.shape}",array2)
-
 
 
 # #2
@@ -58,9 +56,11 @@ import numpy as np
 # # * Reemplazar la segunda y cuarta fila con unos
 # # * Reemplazar la tercera y octava columna con dos (2).
 
-# zeros=np.zeros((5,10), dtype=int)
-
+zeros = np.zeros((5, 10), dtype=int)
+zeros[(1, 3), :] = 1
+zeros[:, (2, 7)] = 2
+zeros[(1), (5)] = 10
+print(zeros)
 
 # #**6
-f = np.array([0,1,2,3,4])
-
+f = np.array([0, 1, 2, 3, 4])
