@@ -8,8 +8,27 @@
 # a. Se puede usar la función input() para obtener una entrada de teclado.<br>
 # b. Se puede usar la el modulo random para obtener valores aleatorios.
 
+import random as ran
 
-import random
+
+class stack():
+    def __init__(self):
+        self.items = []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        return self.items.pop()
+
+    def isEmpty(self):
+        return self.items == []
+
+    def peek(self):
+        return self.items[-1]
+
+    def size(self):
+        return len(self.items)
 
 
 class game():
@@ -19,7 +38,9 @@ class game():
     def playGame(self):
         print('\n\n\nThe object of the game is to draw numbers from a list without the total sum exceeding 50. \nIf you stop and the next sum exceeds 50, you win with 10 points. If the sum is greater than 50,\n you lose. If the sum is less than 50, we subtract one point for each number you could have rolled without exceeding 50.')
         print("\nLET'US BEGIN!\n")
-        lis = [random.randint(1, 21) for i in range(20)]
+        lis = stack()
+        for i in range(1, 21):
+            lis.push(ran.randint(1, 21))
         sum = lis.pop()
         print(f'\nWas removed the: {sum}')
         while True:
@@ -61,3 +82,17 @@ games.playGame()
 #  Vaciar la jarra de 5 litros
 #  Verter el contenido de la jarra de 3 litros en la de 5 litros
 #  Verter el contenido de la jarra de 5 litros en la de 3 litros
+
+
+class jug3():
+    def __init__(self):
+        self.jug = 0
+
+    def full(self):
+        self.jug = 3
+
+    def empty(self):
+        self.jug = 0
+
+
+class jug5():
