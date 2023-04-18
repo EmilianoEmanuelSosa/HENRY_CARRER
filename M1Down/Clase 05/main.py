@@ -92,26 +92,22 @@ class jug3():
     def value(self):
         return self.jug
 
-    def empty(self):
-        self.jug = 0
-        return 0
+    def sumar(self, value):
+        self.jug += value
 
-    def receiver(self, value):
-        if value < 3:
-            value -= 3
-            self.jug = value
-            return value
+    def restar(self, value):
+        self.jug = value
 
-    def transfersend(self):
-        if self.jug > 0:
-            transferobj = jug5(self.jug)
-            transferobj.full()
-            return
-        return transferobj.full()
+    def transfer(self, jug_donante, jug_receptor):
+        if jug_donante.value() > 0 and jug_receptor.value() < jug_receptor.full():
+            cantidad = min(jug_donante.value(),
+                           jug_receptor.full() - jug_receptor.value())
+            jug_donante.restar(jug_donante.value() - cantidad)
+            jug_receptor.sumar(cantidad)
 
 
 class jug5():
-    def __init__(self,):
+    def __init__(self):
         self.jug = 0
 
     def value(self):
@@ -119,26 +115,23 @@ class jug5():
 
     def full(self):
         self.jug = 5
+        return self.jug
 
     def empty(self):
         self.jug = 0
 
-    def receiver(self, value):
-        if self.jug + value <= 5:
-            self.jug += value
-            return value
-        elif self.jug + value > 5:
-            ley = self.jug
-            self.jug = 5
-            return (ley+value)-5
+    def sumar(self, value):
+        self.jug += value
 
-    def transfersend(self):
-        if self.jug > 0:
-            tranferobj = jug3()
-            tranferobj.receiver(self.jug)
-            return
-        elif self.jug == 0:
-            print('nothing to transfer...')
+    def restar(self, value):
+        self.jug = value
+
+    def transfer(self, jug_donante, jug_receptor):
+        if jug_donante.value() > 0 and jug_receptor.value() < jug_receptor.full():
+            cantidad = min(jug_donante.value(),
+                           jug_receptor.full() - jug_receptor.value())
+            jug_donante.restar(jug_donante.value() - cantidad)
+            jug_receptor.sumar(cantidad)
 
 
 class playgamejug():
@@ -146,53 +139,67 @@ class playgamejug():
         print("The game consis in leave with 4 liters the jug of 5 liters, emptying or filling the jug of 3 or 5 liters\nLET'US BEGIN!\n")
 
     def play(self):
-        while True:
-            while True:
-                a = int(input(
-                    'Introduce 1 if you want fill the of 3 litter or 2 if you want to fill the jug of 5 litters: '))
-                if a == 1:
-                    j = jug3()
-                    j.full()
-                    b = jug5()
-                    break
-                elif a == 2:
-                    b = jug5()
-                    b.full()
-                    j = jug3()
-                    break
-                else:
-                    print('dont be any jug')
-            if b.value() == 4 or j.value() == 4:
-                print('YOU WIN')
-                break
-            while True:
-                transfer = int(
-                    input('transfer any jug? if is yes tell me which.. 1 or 2 or 3 if you want pass'))
-                if transfer == 1:
-                    j.transfersend()
-                    break
-                elif transfer == 2:
-                    b.transfersend()
-                    break
-                elif transfer == 3:
-                    break
-                else:
-                    print('Donde be any jug')
-            while True:
-                empty = int(
-                    input('What jug you want to empty? 1 or 2? or 3 if you want to pass'))
-                if empty == 1:
-                    j.empty()
-                    print('the jug of 3 litter be empty')
-                    break
-                elif empty == 2:
-                    b.empty()
-                    print('the jug of 5 litter be empty')
-                    break
-                elif empty == 3:
-                    break
-                else:
-                    print('Dont be any jug')
+    jugobjet3 = jug3()
+    jugobjet5 = jug5()
+    while True:
+        print(jugobjet3.value(), jugobjet5.value())
+        count = 0
+        a = int(input(
+            'Introduce 1 if you want fill the of 3 litter or 2 if you want to fill the jug of 5 litters or 3 if you want to pass: '))
+        if a == 1:
+            jugobjet3.full()
+            count += 1
+            print('The jug of 3 liter is filled...')
+        elif a == 2:
+            jugobjet5.full()
+            count += 1
+            print('The jug of 5 liter is filled...')
+        elif a == 3 and count == 0:
+            print('You have to fill any jug....')
+        else:
+            print('There are no jugs')
+            count += 1
+
+        transfer = int(
+            input('Transfer water? Enter 1 for the 3 liter jug, 2 for the 5 liter jug or 3 to pass: '))
+
+        if transfer == 1:
+            transfer_done = transfer(jugobjet3, jugobjet5)
+            if transfer_done:
+                print(
+                    f'Now the Jug of 3 liters has {jugobjet3.value()} liters and the Jug of 5 liters has {jugobjet5.value()} liters....')
+            else:
+                print('Transfer not possible')
+
+        elif transfer == 2:
+            transfer_done = transfer(jugobjet5, jugobjet3)
+            if transfer_done:
+                print(
+                    f'Now the Jug of 3 liters has {jugobjet3.value()} liters and the Jug of 5 liters has {jugobjet5.value()} liters....')
+            else:
+                print('Transfer not possible')
+        elif transfer == 3:
+            pass
+        else:
+            print('Invalid choice')
+
+        if (jugobjet5.value() == 4):
+            print('YOU WIN!')
+            break
+
+        empty = int(
+            input('What jug do you want to empty? Enter 1 for the 3 liter jug, 2 for the 5 liter jug or 3 to pass: '))
+        if empty == 1:
+            jugobjet3.empty()
+            print('The 3 liter jug is now empty')
+        elif empty == 2:
+            jugobjet5.empty()
+            print('The 5 liter jug is now empty')
+        elif empty == 3:
+            pass
+        else:
+            print('Invalid choice')
+            # print(jugobjet5.value(), jugobjet3.value())
 
 
 a = playgamejug()
