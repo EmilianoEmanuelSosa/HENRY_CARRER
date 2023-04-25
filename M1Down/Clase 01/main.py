@@ -18,6 +18,7 @@ def Numberbinary(numero):
             print('Number not interger or equal or mayor to 0, Try again')
             return binario
 
+
 '''2) Convertir de decimal a binario las fracciones 1/2, 1/3, 1/4, 1/5, 1/6, 1/7,
 1/8, 1/9. Luego analizar los resultados y observar qué particularidad se encuentra
 en los mismos. Se puede usar Python o una calculadora, lo importante es ver si hay
