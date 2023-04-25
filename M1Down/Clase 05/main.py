@@ -124,6 +124,7 @@ class jug5():
             return "Don't be posible..."
         if ((volumewater+self.capacity) == 5) or ((volumewater+self.capacity) < 5):
             self.capacity += volumewater
+            return 05
         elif ((volumewater+self.capacity) > 5):
             if ((volumewater+self.capacity)-5)*-1 < 0:
                 return ((volumewater+self.capacity)-5)
@@ -164,8 +165,8 @@ class gamejug():
                 trans = int(input(
                     'You can only transfer a jug fill... and the jug that you decide transfer for the another jug...1 for the 3 litters and 2 for the 5 litters and 3 for pass.... '))
                 if trans == 1:
-                    jarra5.transfer(jarra3.get_capacity())
-                    print(jarra5.get_capacity())
+                    result = jarra5.transfer(jarra3.get_capacity())
+                    jarra3.()
                 if trans == 2:
                     jarra3.transfer(jarra5.get_capacity())
 
