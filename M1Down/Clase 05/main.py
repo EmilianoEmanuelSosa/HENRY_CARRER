@@ -91,6 +91,9 @@ class jug3():
     def full(self):
         self.capacity = 3
 
+    def ac(self, val):
+        self.capacity = val
+
     def empty(self):
         self.capacity = 0
 
@@ -99,6 +102,7 @@ class jug3():
             return "Don't be posible..."
         if (volumewater+self.capacity == 3) or (volumewater+self.capacity < 3):
             self.capacity += volumewater
+            return 0
         elif (volumewater+self.capacity > 3):
             if ((volumewater+self.capacity)-3)*-1 < 0:
                 return ((volumewater+self.capacity)-3)
@@ -113,6 +117,9 @@ class jug5():
     def get_capacity(self):
         return self.capacity
 
+    def ac(self, val):
+        self.capacity = val
+
     def full(self):
         self.capacity = 5
 
@@ -124,7 +131,7 @@ class jug5():
             return "Don't be posible..."
         if ((volumewater+self.capacity) == 5) or ((volumewater+self.capacity) < 5):
             self.capacity += volumewater
-            return 05
+            return 0
         elif ((volumewater+self.capacity) > 5):
             if ((volumewater+self.capacity)-5)*-1 < 0:
                 return ((volumewater+self.capacity)-5)
@@ -144,31 +151,68 @@ class gamejug():
     def playgame(self):
         jarra3 = jug3()
         jarra5 = jug5()
+        count1 = 0
         while True:
+            print((jarra3.get_capacity()))
+            print(jarra5.get_capacity())
             while True:
-                count1 = 0
                 full = int(input(
                     'What jug your fill?, 1 for the jug of 3 litter and 2 for the jug of 5 litter or 3 if you can pass...'))
                 if full == 1:
                     jarra3.full()
                     count1 += 1
                     print('The jug of 3 litter is fill..')
+                    ju = False
+                    ja = True
                     break
                 elif full == 2:
                     jarra5.full()
                     print('The jug of 5 litters is fill..')
                     count1 += 1
+                    ju = True
+                    ja = False
                     break
                 elif full == 3 and count1 != 0:
                     break
+            print((jarra3.get_capacity()))
+            print(jarra5.get_capacity())
+            if (jarra5.get_capacity()) == 4:
+                print('You are amazing and you win...')
+                break
             while True:
                 trans = int(input(
                     'You can only transfer a jug fill... and the jug that you decide transfer for the another jug...1 for the 3 litters and 2 for the 5 litters and 3 for pass.... '))
-                if trans == 1:
+                if trans == 1 and ja:
                     result = jarra5.transfer(jarra3.get_capacity())
-                    jarra3.()
-                if trans == 2:
+                    jarra5.transfer(jarra3.get_capacity())
+                    jarra3.ac(result)
+                    print(
+                        f'The jug of 3 litters have now:{jarra3.get_capacity()}')
+                    break
+                elif trans == 2 and ju:
+                    result = jarra3.transfer(jarra5.get_capacity())
                     jarra3.transfer(jarra5.get_capacity())
+                    jarra5.ac(result)
+                    print(
+                        f'The jug of 5 litters have now:{jarra5.get_capacity()}')
+                    break
+                elif trans == 3:
+                    break
+            print((jarra3.get_capacity()))
+            print(jarra5.get_capacity())
+            while True:
+                emp = int(input(
+                    'tell me the jug tbat you want to empty, 1 for the 3 and 2 for the 5 and 3 for pass...'))
+                if emp == 1:
+                    jarra3.empty()
+                    print('the jug of 3 litters is empty...')
+                    break
+                elif emp == 2:
+                    jarra5.empty()
+                    print('the jug of 5 litters is empty...')
+                    break
+                elif emp == 3:
+                    break
 
 
 a = gamejug()
