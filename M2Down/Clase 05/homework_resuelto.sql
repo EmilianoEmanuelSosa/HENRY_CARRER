@@ -1,6 +1,5 @@
 DROP DATABASE henry;
 CREATE DATABASE henry;
-
 USE henry;
 
 CREATE TABLE carrera (
@@ -8,12 +7,6 @@ CREATE TABLE carrera (
     nombre VARCHAR (50) NOT NULL,
     PRIMARY KEY (idCarrera)
     );
-
--- Query para ver la estructura de la tabla
-DESC carrera;
-
-/* Esto es un comentario
-de varias líneas */
 
 CREATE TABLE instructor (
 	idInstructor INT NOT NULL AUTO_INCREMENT,
