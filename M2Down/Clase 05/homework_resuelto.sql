@@ -1,6 +1,6 @@
 DROP DATABASE henry;
-CREATE DATABASE henry;
-USE henry;
+CREATE DATABASE arbol;
+USE arbol;
 
 CREATE TABLE carrera (
 	idCarrera INT NOT NULL AUTO_INCREMENT,
