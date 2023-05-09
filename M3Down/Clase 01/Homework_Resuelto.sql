@@ -15,9 +15,10 @@ DELIMITER ;
 CALL totalOrdenes('2002-01-01');
 
 -- 2)
-SET GLOBAL log_bin_trust_function_creators = 1;
 
 DROP FUNCTION margenBruto;
+
+SET GLOBAL log_bin_trust_function_creators = 1;
 
 DELIMITER $$
 CREATE FUNCTION margenBruto(precio DECIMAL(15,3), margen DECIMAL (9,2)) RETURNS DECIMAL (15,3)
