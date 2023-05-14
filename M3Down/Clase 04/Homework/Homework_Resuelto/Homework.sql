@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `venta` (
   `Fecha` 				DATE NOT NULL,
   `Fecha_Entrega` 		DATE NOT NULL,
   `IdCanal`				INTEGER, 
-  `IdCliente`			INTEGER, 
+  `IdCliente`			INwTEGER, 
   `IdSucursal`			INTEGER,
   `IdEmpleado`			INTEGER,
   `IdProducto`			INTEGER,
