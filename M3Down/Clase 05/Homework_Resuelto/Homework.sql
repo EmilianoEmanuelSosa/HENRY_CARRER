@@ -263,11 +263,11 @@ CREATE TABLE IF NOT EXISTS `sector` (
 
 INSERT INTO cargo (Cargo) SELECT DISTINCT Cargo FROM empleado ORDER BY 1;
 INSERT INTO sector (Sector) SELECT DISTINCT Sector FROM empleado ORDER BY 1;
-                    
+
 select * from cargo;
 select * from sector;
 
-ALTER TABLE `empleado` 	ADD `IdSector` INT NOT NULL DEFAULT '0' AFTER `IdSucursal`, 
+ALTER TABLE `empleado` 	ADD `IdSector` INT NOT NULL DEFAULT '0' AFTER `IdSucursal`,
 						ADD `IdCargo` INT NOT NULL DEFAULT '0' AFTER `IdSector`;
 
 UPDATE empleado e JOIN cargo c ON (c.Cargo = e.Cargo) SET e.IdCargo = c.IdCargo;
