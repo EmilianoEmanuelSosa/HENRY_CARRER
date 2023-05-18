@@ -74,9 +74,9 @@ CREATE TABLE calendario (
 ALTER TABLE `calendario` CHANGE `id` `IdFecha` INT(11) NOT NULL;
 ALTER TABLE `calendario` ADD UNIQUE(`fecha`);
 
-/*LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\Calendario.csv' 
+/*LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\Calendario.csv'
 INTO TABLE calendario
-FIELDS TERMINATED BY ',' ENCLOSED BY '' ESCAPED BY '' 
+FIELDS TERMINATED BY ',' ENCLOSED BY '' ESCAPED BY ''
 LINES TERMINATED BY '\n' IGNORE 1 LINES;*/
 
 /*TRUNCATE TABLE calendario;*/
@@ -92,7 +92,7 @@ ALTER TABLE `producto` CHANGE `IDProducto` `IdProducto` INT(11) NULL DEFAULT NUL
 ALTER TABLE `producto` CHANGE `Concepto` `Producto` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL;
 
 /*Tipos de Datos*/
-ALTER TABLE `cliente` 	ADD `Latitud` DECIMAL(13,10) NOT NULL DEFAULT '0' AFTER `Y`, 
+ALTER TABLE `cliente` 	ADD `Latitud` DECIMAL(13,10) NOT NULL DEFAULT '0' AFTER `Y`,
 						ADD `Longitud` DECIMAL(13,10) NOT NULL DEFAULT '0' AFTER `Latitud`;
 UPDATE cliente SET Y = '0' WHERE Y = '';
 UPDATE cliente SET X = '0' WHERE X = '';
@@ -110,7 +110,7 @@ ALTER TABLE `producto` ADD `Precio` DECIMAL(15,3) NOT NULL DEFAULT '0' AFTER `Pr
 UPDATE `producto` SET Precio = REPLACE(Precio2,',','.');
 ALTER TABLE `producto` DROP `Precio2`;
 
-ALTER TABLE `sucursal` 	ADD `Latitud` DECIMAL(13,10) NOT NULL DEFAULT '0' AFTER `Longitud2`, 
+ALTER TABLE `sucursal` 	ADD `Latitud` DECIMAL(13,10) NOT NULL DEFAULT '0' AFTER `Longitud2`,  
 						ADD `Longitud` DECIMAL(13,10) NOT NULL DEFAULT '0' AFTER `Latitud`;
 UPDATE `sucursal` SET Latitud = REPLACE(Latitud2,',','.');
 UPDATE `sucursal` SET Longitud = REPLACE(Longitud2,',','.');
