@@ -1,0 +1,9 @@
+{
+  "lessonTitle": "Tercera clase",
+  "permalink": "/Tema_Tres/",
+  "quizzID" : "6057d0a5656c8d23c2e60e3e",
+  "eleventyNavigation": {
+    "key": "Tema 3",
+    "order": 3
+  }
+}
