@@ -1,0 +1,5 @@
+M5Down/Proyecto[[:space:]]Integrador/1[[:space:]]Call[[:space:]]Center/Call_Center_1999_DataSet.csv filter=lfs diff=lfs merge=lfs -text
+M5Down/Proyecto[[:space:]]Integrador/2[[:space:]]AirBnB/calendar.csv filter=lfs diff=lfs merge=lfs -text
+M5Down/Proyecto[[:space:]]Integrador/2[[:space:]]AirBnB/reviews.csv filter=lfs diff=lfs merge=lfs -text
+M5Down/Proyecto[[:space:]]Integrador/2[[:space:]]AirBnB/listings.csv filter=lfs diff=lfs merge=lfs -text
+C:/Users/mkm/Desktop/programin/HENRY_CARRER/M5Down/Proyecto[[:space:]]Integrador/2[[:space:]]AirBnB/listings.csv filter=lfs diff=lfs merge=lfs -text
