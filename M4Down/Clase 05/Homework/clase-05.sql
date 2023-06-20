@@ -18,7 +18,7 @@ CREATE TABLE contacts(
    CONSTRAINT fk_customer
       FOREIGN KEY(customer_id) 
 	  REFERENCES customers(customer_id)
-);
+)
 
 INSERT INTO customers(customer_name)
 VALUES('BlueBird Inc'),
